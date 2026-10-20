@@ -37,6 +37,20 @@
 
   --color-overlay: rgb(26 28 25 / 48%);
 
+  /* --- Color: superficie oscura (barra lateral) ---
+     Gris carbón cálido, afín al gris de marca. Contraste sobre el fondo:
+     texto 12.3:1, texto secundario 6.2:1, íconos 8.3:1 → cumple WCAG AA. */
+  --color-sidebar-surface: #262321;
+  --color-sidebar-surface-hover: #33302c;
+  --color-sidebar-text: #e8e4e0;
+  --color-sidebar-text-muted: #a8a29b;
+  --color-sidebar-icon: #c2bcb5;
+  --color-sidebar-border: #3d3934;
+  --color-sidebar-avatar: #3d3934;
+
+  /* Anillo de foco sobre fondo oscuro: el verde de acción no se distingue. */
+  --color-focus-on-dark: #9ed16a;
+
   /* --- Tipografía --- */
   --font-display: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;

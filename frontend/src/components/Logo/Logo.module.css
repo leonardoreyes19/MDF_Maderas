@@ -1,9 +1,8 @@
 .frame {
-  /* El PNG tiene fondo blanco: la superficie debe ser exactamente #ffffff. */
+  /* El PNG es transparente: el fondo lo pone la superficie contenedora. */
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
 }
 
 .image {

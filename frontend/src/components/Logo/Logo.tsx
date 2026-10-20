@@ -9,8 +9,9 @@ type LogoProps = {
 }
 
 /**
- * El archivo de marca es un PNG con fondo blanco, por lo que el componente
- * fuerza una superficie #FFFFFF detrás de la imagen en todos sus usos.
+ * El archivo de marca es un PNG con fondo transparente, así que el logo toma
+ * el color de la superficie donde se coloque (blanco en el login, gris carbón
+ * en la barra lateral). El componente no impone ningún fondo.
  */
 export function Logo({ size = 'md', className }: LogoProps) {
   return (

@@ -1,4 +1,4 @@
-import { PanelLeftClose, PanelLeftOpen, X } from 'lucide-react'
+import { LogOut, X } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import { NAV_ITEMS } from '../../config/navigation'
 import { Logo } from '../Logo/Logo'
@@ -8,18 +8,23 @@ import styles from './Sidebar.module.css'
 type SidebarProps = {
   /** Modo solo íconos en escritorio. */
   collapsed: boolean
-  onToggleCollapse: () => void
   /** Cajón abierto en pantallas pequeñas. */
   mobileOpen: boolean
   onCloseMobile: () => void
+  /** Nombre visible de la sesión simulada. */
+  userName: string
+  onSignOut: () => void
 }
 
 export function Sidebar({
   collapsed,
-  onToggleCollapse,
   mobileOpen,
   onCloseMobile,
+  userName,
+  onSignOut,
 }: SidebarProps) {
+  const initials = userName.trim().slice(0, 2).toUpperCase()
+
   return (
     <aside
       id="sidebar-principal"
@@ -54,6 +59,7 @@ export function Sidebar({
                 <NavLink
                   to={item.path}
                   onClick={onCloseMobile}
+                  aria-label={item.label}
                   title={collapsed ? item.label : undefined}
                   className={({ isActive }) =>
                     cx(styles.link, isActive && styles.linkActive)
@@ -69,24 +75,30 @@ export function Sidebar({
       </nav>
 
       <div className={styles.footer}>
-        <span className={styles.footerText}>
-          Trazabilidad de órdenes
-          <span className={cx(styles.footerVersion, 'tabular')}>v0.1</span>
-        </span>
+        <div
+          className={styles.profile}
+          title={collapsed ? `${userName} · Usuario` : undefined}
+        >
+          <span className={styles.avatar} aria-hidden>
+            {initials}
+          </span>
+          {/* Colapsada se oculta a la vista, pero sigue disponible para
+              lectores de pantalla (ver .profileText en el CSS). */}
+          <span className={styles.profileText}>
+            <span className={styles.profileName}>{userName}</span>
+            <span className={styles.profileRole}>Usuario</span>
+          </span>
+        </div>
+
         <button
           type="button"
-          className={cx(styles.iconButton, styles.collapseButton)}
-          onClick={onToggleCollapse}
-          aria-label={
-            collapsed ? 'Expandir barra lateral' : 'Colapsar barra lateral'
-          }
-          title={collapsed ? 'Expandir barra lateral' : 'Colapsar barra lateral'}
+          className={styles.signOut}
+          onClick={onSignOut}
+          aria-label="Cerrar sesión"
+          title={collapsed ? 'Cerrar sesión' : undefined}
         >
-          {collapsed ? (
-            <PanelLeftOpen size={18} />
-          ) : (
-            <PanelLeftClose size={18} />
-          )}
+          <LogOut className={styles.signOutIcon} size={18} aria-hidden />
+          <span className={styles.signOutLabel}>Cerrar sesión</span>
         </button>
       </div>
     </aside>
