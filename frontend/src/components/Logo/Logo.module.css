@@ -1,0 +1,25 @@
+.frame {
+  /* El PNG tiene fondo blanco: la superficie debe ser exactamente #ffffff. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.image {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sm {
+  height: 34px;
+}
+
+.md {
+  height: 48px;
+}
+
+.lg {
+  height: 92px;
+}

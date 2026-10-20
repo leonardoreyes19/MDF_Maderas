@@ -1,0 +1,139 @@
+.page {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  min-height: 100vh;
+}
+
+/* --- Panel de marca --- */
+
+.brandPanel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--space-16) var(--space-12);
+  overflow: hidden;
+  /* El logo vive aquí: la superficie debe ser exactamente #ffffff. */
+  background-color: #fff;
+}
+
+.brandContent {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+}
+
+.brandLogo {
+  margin-bottom: var(--space-8);
+}
+
+/* Corte diagonal tomado de la barra inferior del logo. */
+.brandRule {
+  display: block;
+  width: 168px;
+  height: 6px;
+  margin-bottom: var(--space-6);
+  background-color: var(--color-brand);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+}
+
+.brandTitle {
+  margin-bottom: var(--space-4);
+  font-size: var(--text-3xl);
+}
+
+.brandText {
+  max-width: 42ch;
+  color: var(--color-text-muted);
+}
+
+/* Franja decorativa inferior con el mismo corte diagonal. */
+.brandStripe {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 62%;
+  height: 10px;
+  background-color: var(--color-brand);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 26px) 100%, 0 100%);
+}
+
+/* --- Panel del formulario --- */
+
+.formPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) var(--space-8);
+  background-color: var(--color-surface-alt);
+  border-left: 1px solid var(--color-border-soft);
+}
+
+.formCard {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Solo se muestra cuando el panel de marca se oculta. */
+.formLogo {
+  display: none;
+  margin-bottom: var(--space-8);
+}
+
+.formHeader {
+  margin-bottom: var(--space-8);
+}
+
+.formTitle {
+  margin-bottom: var(--space-2);
+  font-size: var(--text-2xl);
+}
+
+.formSubtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.formError {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-danger);
+  background-color: var(--color-danger-soft);
+  border-left: 3px solid var(--color-danger);
+  border-radius: var(--radius-sm);
+}
+
+.note {
+  margin-top: var(--space-6);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* --- Responsive --- */
+
+@media (width < 900px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .brandPanel {
+    display: none;
+  }
+
+  .formPanel {
+    align-items: flex-start;
+    padding: var(--space-10) var(--space-5) var(--space-12);
+    background-color: var(--color-surface);
+    border-left: none;
+  }
+
+  .formLogo {
+    display: inline-flex;
+  }
+}

@@ -1,0 +1,49 @@
+.shell {
+  min-height: 100%;
+  background-color: var(--color-surface-alt);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--transition-slow);
+}
+
+.mainCollapsed {
+  margin-left: var(--sidebar-width-collapsed);
+}
+
+.content {
+  flex: 1;
+  padding: var(--space-8) var(--space-8) var(--space-12);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background-color: var(--color-overlay);
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity var(--transition-slow),
+    visibility var(--transition-slow);
+}
+
+@media (width < 900px) {
+  .main,
+  .mainCollapsed {
+    margin-left: 0;
+  }
+
+  .content {
+    padding: var(--space-6) var(--space-4) var(--space-10);
+  }
+
+  .overlayVisible {
+    visibility: visible;
+    opacity: 1;
+  }
+}
